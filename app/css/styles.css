@@ -1,0 +1,101 @@
+html,
+body {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+p,
+ul,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+input {
+  outline: none;
+}
+
+[class$="-container"] {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* Header */
+.header-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.header-block {
+  display: flex;
+
+  & li {
+    display: inline-block;
+    margin: 5px;
+  }
+}
+
+.header-block:nth-child(2n) {
+  justify-content: flex-end;
+}
+
+.header-top {
+  & .header-block {
+    flex-basis: 50%;
+  }
+}
+
+.choose-block {
+  display: block;
+  width: 90%;
+  height: 40px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+
+  & .choose-field {
+    width: calc(100% - 40px);
+    height: 100%;
+    padding: 0 10px;
+    border: none;
+  }
+
+  &::before {
+    content: "";
+    width: 40px;
+    height: 40px;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    position: absolute;
+    top: -1px;
+    right: -1px;
+    cursor: pointer;
+  }
+}
+
+/* Content */
+.emoji-block {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.emoji-item {
+  font-size: 30px;
+  margin: 5px;
+}
