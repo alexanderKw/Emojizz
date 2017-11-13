@@ -24,7 +24,8 @@ a {
   text-decoration: none;
 }
 
-input {
+input,
+button {
   outline: none;
 }
 
@@ -34,10 +35,17 @@ input {
 }
 
 /* Header */
+.header-container {
+  border-bottom: 1px solid #e6e4e3;
+  padding: 36px 4px 0;
+}
+
 .header-section {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  flex-direction: row-reverse;
+  flex-grow: 1;
 }
 
 .header-block {
@@ -45,15 +53,21 @@ input {
 
   & li {
     display: inline-block;
-    margin: 5px;
   }
 }
 
-.header-block:nth-child(2n) {
+.header-block:nth-child(1n) {
   justify-content: flex-end;
+  align-items: center;
+}
+
+.header-block:nth-child(2n) {
+  justify-content: flex-start;
 }
 
 .header-top {
+  margin-bottom: 27px;
+
   & .header-block {
     flex-basis: 50%;
   }
@@ -75,8 +89,8 @@ input {
     border: none;
   }
 
-  &::before {
-    content: "";
+  & .wr-btn-copy {
+    display: flex;
     width: 40px;
     height: 40px;
     border: 1px solid #ccc;
@@ -86,6 +100,98 @@ input {
     right: -1px;
     cursor: pointer;
   }
+}
+
+.header-info-links {
+  & li {
+    margin-left: 22px;
+    margin-right: 22px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  & .toggle-theme {
+    width: 32px;
+    height: 16px;
+    border: 1px solid #cccac8;
+    border-radius: 20px;
+    margin-left: 9px;
+    vertical-align: middle;
+    position: relative;
+    text-indent: -9999px;
+    cursor: pointer;
+
+    &::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      background-color: #5e5c5b;
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      right: 2px;
+      margin-top: -4px;
+    }
+  }
+}
+
+/* header bottom section */
+.wr-search-field {
+  width: 280px;
+  height: 58px;
+  position: relative;
+
+  & .search-field {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border: none;
+    padding: 2px 35px 2px 30px;
+    transition: all .3s;
+
+    &:focus {
+      box-shadow: 0 1px 0 0 #ffc800, inset 0 -2px 0 0 #ffc800;
+    }
+  }
+
+  & .icon-search_ic,
+  & .icon-clear_ic {
+    border: none;
+    background-color: transparent;
+    position: absolute;
+    top: 50%;
+  }
+
+  & .icon-search_ic {
+    left: 3px;
+    margin-top: -9.5px;
+  }
+
+  & .icon-clear_ic {
+    right: 6px;
+    margin-top: -6.5px;
+  }
+}
+
+.search-filter {
+  & li {
+    width: 39px;
+    height: 39px;
+    text-indent: -9999px;
+  }
+
+  & a {
+    display: flex;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.icon {
+  display: block;
+  margin: auto;
 }
 
 /* Content */
