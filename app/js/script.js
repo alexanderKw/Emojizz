@@ -33,3 +33,42 @@ const searchInput = document.querySelector('.search-field');
 const result = document.querySelector('#result');
 searchInput.addEventListener('change', displayMatches);
 searchInput.addEventListener('keyup', displayMatches);
+
+/**
+ * Tabs Filter
+ */
+const flt = document.querySelectorAll('.search-filter a');
+
+function getFlt(filterMatch, emojis) {
+  return emojis.filter(emoji => {
+    const regex = new RegExp(filterMatch, 'gi');
+    if (emoji.category) {
+      return emoji.category.match(regex);
+    } else {
+      return null;
+    }
+  });
+}
+
+function displayMatches2(e) {
+  e.preventDefault();
+  const matchArray = getFlt(this.getAttribute('href'), emojis);
+  const html = matchArray
+    .map(emoji => {
+      return `
+      <li class="emoji-item">
+        ${emoji.char}
+      </li>
+    `;
+    })
+    .join('');
+
+  if (html) {
+    result.innerHTML = html;
+  } else {
+    result.innerHTML = 'NOBODY!!!';
+  }
+}
+
+// flt.addEventListener('click', getFlt);
+flt.forEach(el => el.addEventListener('click', displayMatches2));
