@@ -47,7 +47,7 @@ gulp.task('css', () => {
   let processors = [cssnext, cssnano];
 
   return gulp
-    .src('./app/css/**/*.css')
+    .src(['./app/css/sprite.css', './app/css/styles.css'])
     .pipe(
       plumber({
         errorHandler: notify.onError(err => {
@@ -108,6 +108,10 @@ gulp.task('sprite', () => {
   return merge(imgStream, cssStream);
 });
 
+gulp.task('move-fonts', () => {
+  gulp.src('./app/fonts/*').pipe(gulp.dest('./dist/fonts/'));
+});
+
 gulp.task('emoji-json', () => {
   gulp
     .src('./node_modules/emoji.json/emoji.json')
@@ -124,5 +128,14 @@ gulp.task('watch', () => {
   gulp.watch('./app/css/**/*.css', ['css']);
   gulp.watch('./app/js/**/*.js', ['js']);
 });
+
+gulp.task('build', [
+  'htmlmin',
+  'css',
+  'js',
+  'sprite',
+  'move-fonts',
+  'emoji-json'
+]);
 
 gulp.task('default', ['serv', 'htmlmin', 'css', 'js', 'emoji-json', 'watch']);

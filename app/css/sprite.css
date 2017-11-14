@@ -16,160 +16,188 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
 // HTML
 <i class="icon icon-home"></i>
 */
-.icon {
-  background-image: url(../img/sprites/sprite.png);
-}
 .icon-arrows_ic {
+  background-image: url(../img/sprites/sprite.png);
   background-position: -167px -40px;
   width: 18px;
   height: 20px;
 }
 .icon-arrows_ic_active {
+  background-image: url(../img/sprites/sprite.png);
   background-position: -167px 0px;
   width: 18px;
   height: 20px;
 }
 .icon-clear_ic {
+  background-image: url(../img/sprites/sprite.png);
   background-position: -167px -121px;
   width: 13px;
   height: 13px;
 }
 .icon-clear_ic_active {
+  background-image: url(../img/sprites/sprite.png);
   background-position: -205px -155px;
   width: 13px;
   height: 13px;
 }
 .icon-copy_ic {
+  background-image: url(../img/sprites/sprite.png);
   background-position: -205px -41px;
   width: 15px;
   height: 18px;
 }
 .icon-copy_ic_active {
+  background-image: url(../img/sprites/sprite.png);
   background-position: -205px -117px;
   width: 15px;
   height: 18px;
 }
 .icon-copy_ic_disable {
+  background-image: url(../img/sprites/sprite.png);
   background-position: -205px -79px;
   width: 15px;
   height: 18px;
 }
 .icon-currency_ic {
+  background-image: url(../img/sprites/sprite.png);
   background-position: -43px -41px;
   width: 20px;
   height: 19px;
 }
 .icon-currency_ic_active {
+  background-image: url(../img/sprites/sprite.png);
   background-position: 0px -81px;
   width: 20px;
   height: 19px;
 }
 .icon-facebook_ic {
+  background-image: url(../img/sprites/sprite.png);
   background-position: -38px -156px;
   width: 18px;
   height: 18px;
 }
 .icon-flags_ic {
+  background-image: url(../img/sprites/sprite.png);
   background-position: -36px -194px;
   width: 16px;
   height: 19px;
 }
 .icon-flags_ic_active {
+  background-image: url(../img/sprites/sprite.png);
   background-position: 0px -194px;
   width: 16px;
   height: 19px;
 }
 .icon-food_ic {
+  background-image: url(../img/sprites/sprite.png);
   background-position: -42px 0px;
   width: 22px;
   height: 21px;
 }
 .icon-food_ic_active1 {
+  background-image: url(../img/sprites/sprite.png);
   background-position: 0px 0px;
   width: 22px;
   height: 21px;
 }
 .icon-math_ic {
+  background-image: url(../img/sprites/sprite.png);
   background-position: -72px -194px;
   width: 17px;
   height: 17px;
 }
 .icon-math_ic_active {
+  background-image: url(../img/sprites/sprite.png);
   background-position: -114px -156px;
   width: 17px;
   height: 17px;
 }
 .icon-objects_ic {
+  background-image: url(../img/sprites/sprite.png);
   background-position: -167px -80px;
   width: 16px;
   height: 21px;
 }
 .icon-objects_ic_active {
+  background-image: url(../img/sprites/sprite.png);
   background-position: -205px 0px;
   width: 15px;
   height: 21px;
 }
 .icon-pets_ic {
+  background-image: url(../img/sprites/sprite.png);
   background-position: 0px -41px;
   width: 23px;
   height: 20px;
 }
 .icon-pets_ic_active {
+  background-image: url(../img/sprites/sprite.png);
   background-position: -84px 0px;
   width: 23px;
   height: 19px;
 }
 .icon-search_ic {
+  background-image: url(../img/sprites/sprite.png);
   background-position: -127px -78px;
   width: 19px;
   height: 19px;
 }
 .icon-search_ic_active {
+  background-image: url(../img/sprites/sprite.png);
   background-position: -127px -39px;
   width: 19px;
   height: 19px;
 }
 .icon-smile_ic {
+  background-image: url(../img/sprites/sprite.png);
   background-position: -80px -81px;
   width: 20px;
   height: 19px;
 }
 .icon-smile_ic_active1 {
+  background-image: url(../img/sprites/sprite.png);
   background-position: -40px -81px;
   width: 20px;
   height: 19px;
 }
 .icon-sport_ic {
+  background-image: url(../img/sprites/sprite.png);
   background-position: -84px -39px;
   width: 20px;
   height: 19px;
 }
 .icon-sport_ic_active {
+  background-image: url(../img/sprites/sprite.png);
   background-position: -127px 0px;
   width: 20px;
   height: 19px;
 }
 .icon-symbols_ic {
+  background-image: url(../img/sprites/sprite.png);
   background-position: 0px -156px;
   width: 18px;
   height: 18px;
 }
 .icon-symbols_ic_active {
+  background-image: url(../img/sprites/sprite.png);
   background-position: -151px -156px;
   width: 17px;
   height: 17px;
 }
 .icon-travel_ic {
+  background-image: url(../img/sprites/sprite.png);
   background-position: -43px -120px;
   width: 23px;
   height: 16px;
 }
 .icon-travel_ic_active {
+  background-image: url(../img/sprites/sprite.png);
   background-position: 0px -120px;
   width: 23px;
   height: 16px;
 }
 .icon-twitter_ic {
+  background-image: url(../img/sprites/sprite.png);
   background-position: -76px -156px;
   width: 18px;
   height: 18px;
