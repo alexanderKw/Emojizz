@@ -113,10 +113,7 @@ gulp.task('move-fonts', () => {
 });
 
 gulp.task('emoji-json', () => {
-  gulp
-    .src('./node_modules/emoji.json/emoji.json')
-    .pipe(rename('emoji.json'))
-    .pipe(gulp.dest('./dist/data/'));
+  gulp.src('./app/data/emojis.json').pipe(gulp.dest('./dist/data/'));
 });
 
 gulp.task('clean-dist', () => {
