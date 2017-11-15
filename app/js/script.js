@@ -1,11 +1,37 @@
-const endpoint = '../data/emoji.json';
+const endpoint = '../data/emojis.json';
 const emojis = [];
+const titleBlock = document.querySelector('.title-block');
 
+/** */
+function pageContent() {
+  fetch(endpoint)
+    .then(res => res.json())
+    .then(data => {
+      let html = '';
+      data.forEach(el => {
+        html += `
+          <li class="emoji-item">
+            ${el.char}
+          </li>
+        `;
+      });
+
+      result.innerHTML = html;
+    })
+    .catch(err => console.log(err));
+}
+pageContent();
+/** */
+
+/**
+ * Search Field
+ */
 fetch(endpoint)
   .then(blob => blob.json())
-  .then(data => emojis.push(...data));
+  .then(data => emojis.push(...data))
+  .catch(err => console.log(err));
 
-function findMatches(wordToMatch, emojis) {
+function findMatchesSearch(wordToMatch, emojis) {
   return emojis.filter(emoji => {
     const regex = new RegExp(wordToMatch, 'gi');
 
@@ -14,8 +40,8 @@ function findMatches(wordToMatch, emojis) {
   });
 }
 
-function displayMatches() {
-  const matchArray = findMatches(this.value, emojis);
+function displayMatchesSearch() {
+  const matchArray = findMatchesSearch(this.value, emojis);
   const html = matchArray
     .map(emoji => {
       return `
@@ -27,19 +53,20 @@ function displayMatches() {
     .join('');
 
   result.innerHTML = html;
+  titleBlock.style.display = 'none';
 }
 
 const searchInput = document.querySelector('.search-field');
 const result = document.querySelector('#result');
-searchInput.addEventListener('change', displayMatches);
-searchInput.addEventListener('keyup', displayMatches);
+searchInput.addEventListener('change', displayMatchesSearch);
+searchInput.addEventListener('keyup', displayMatchesSearch);
 
 /**
  * Tabs Filter
  */
-const flt = document.querySelectorAll('.search-filter a');
+const searchFilter = document.querySelectorAll('.search-filter a');
 
-function getFlt(filterMatch, emojis) {
+function findMatchesFilter(filterMatch, emojis) {
   return emojis.filter(emoji => {
     const regex = new RegExp(filterMatch, 'gi');
     if (emoji.category) {
@@ -50,16 +77,19 @@ function getFlt(filterMatch, emojis) {
   });
 }
 
-function displayMatches2(e) {
+function displayMatchesFilter(e) {
   e.preventDefault();
-  const matchArray = getFlt(this.getAttribute('href'), emojis);
+
+  const matchArray = findMatchesFilter(this.getAttribute('href'), emojis);
   const html = matchArray
     .map(emoji => {
+      titleBlock.textContent = emoji.category;
+      titleBlock.style.display = 'block';
       return `
-      <li class="emoji-item">
-        ${emoji.char}
-      </li>
-    `;
+        <li class="emoji-item">
+          ${emoji.char}
+        </li>
+      `;
     })
     .join('');
 
@@ -67,8 +97,9 @@ function displayMatches2(e) {
     result.innerHTML = html;
   } else {
     result.innerHTML = 'NOBODY!!!';
+    titleBlock.style.display = 'none';
   }
 }
 
-// flt.addEventListener('click', getFlt);
-flt.forEach(el => el.addEventListener('click', displayMatches2));
+// searchFilter.addEventListener('click', findMatchesFilter);
+searchFilter.forEach(el => el.addEventListener('click', displayMatchesFilter));

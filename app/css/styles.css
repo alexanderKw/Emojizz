@@ -29,6 +29,7 @@ body {
 
 p,
 ul,
+h2,
 body {
   margin: 0;
   padding: 0;
@@ -249,4 +250,8 @@ body {
 .emoji-item {
   font-size: 30px;
   margin: 5px;
+}
+
+.title-block {
+  display: none;
 }
