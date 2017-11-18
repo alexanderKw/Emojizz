@@ -103,3 +103,30 @@ function displayMatchesFilter(e) {
 
 // searchFilter.addEventListener('click', findMatchesFilter);
 searchFilter.forEach(el => el.addEventListener('click', displayMatchesFilter));
+
+/**
+ * Copy emoji
+ */
+const emojisContent = document.querySelector('.emoji-block');
+const chooseField = document.querySelector('.choose-field');
+
+emojisContent.addEventListener('click', getEmoji);
+
+function getEmoji(em) {
+  const emoji = em.target.textContent;
+  return (chooseField.value += emoji.trim());
+}
+
+const copyBtn = document.querySelector('.wr-btn-copy');
+copyBtn.addEventListener('click', () => {
+  const chooseField = document.querySelector('.choose-field');
+  chooseField.select();
+
+  try {
+    const successful = document.execCommand('copy');
+    const msg = successful ? 'successful' : 'unsuccessful';
+    console.log('Copying text command was ' + msg);
+  } catch (err) {
+    console.log('Oops, unable to copy');
+  }
+});

@@ -231,7 +231,6 @@ body {
     display: flex;
     width: 100%;
     height: 100%;
-    background-color: #cccccc;
   }
 }
 
@@ -254,4 +253,8 @@ body {
 
 .title-block {
   display: none;
+}
+
+.choose-field::selection {
+  background-color: transparent !important;
 }

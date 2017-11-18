@@ -116,14 +116,14 @@ gulp.task('emoji-json', () => {
   gulp.src('./app/data/emojis.json').pipe(gulp.dest('./dist/data/'));
 });
 
-gulp.task('clean-dist', () => {
-  return del.sync('dist');
-});
-
 gulp.task('watch', () => {
   gulp.watch('./app/*.html', ['htmlmin']);
   gulp.watch('./app/css/**/*.css', ['css']);
   gulp.watch('./app/js/**/*.js', ['js']);
+});
+
+gulp.task('clean-dist', () => {
+  return del.sync('dist');
 });
 
 gulp.task('build', [
@@ -135,4 +135,4 @@ gulp.task('build', [
   'emoji-json'
 ]);
 
-gulp.task('default', ['serv', 'htmlmin', 'css', 'js', 'emoji-json', 'watch']);
+gulp.task('default', ['serv', 'build', 'watch']);
