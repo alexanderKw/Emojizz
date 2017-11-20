@@ -9,11 +9,20 @@ function pageContent() {
     .then(data => {
       let html = '';
       data.forEach(el => {
-        html += `
-          <li class="emoji-item">
-            ${el.char}
-          </li>
-        `;
+        if (el.src) {
+          html += `
+            <li class="emoji-item" style="position:relative;">
+              <img src="${el.src}" alt="${el.char}">
+              <span style="position:absolute;top:0;left:0;opacity:0;">${el.char}</span>
+            </li>
+          `;
+        } else {
+          html += `
+            <li class="emoji-item">
+              ${el.char}
+            </li>
+          `;
+        }
       });
 
       result.innerHTML = html;
@@ -113,8 +122,14 @@ const chooseField = document.querySelector('.choose-field');
 emojisContent.addEventListener('click', getEmoji);
 
 function getEmoji(em) {
+  // if (em.target.getAttribute('alt')) {
+  //   console.log(em.target.getAttribute('alt'));
+  //   const emoji = em.target.getAttribute('alt');
+  //   return (chooseField.value += emoji.trim());
+  // } else {
   const emoji = em.target.textContent;
   return (chooseField.value += emoji.trim());
+  // }
 }
 
 const copyBtn = document.querySelector('.wr-btn-copy');

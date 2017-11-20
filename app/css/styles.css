@@ -247,8 +247,15 @@ body {
 }
 
 .emoji-item {
+  flex-basis: 30px;
+  height: 30px;
   font-size: 30px;
   margin: 5px;
+
+  & img {
+    width: 100%;
+    height: auto;
+  }
 }
 
 .title-block {
