@@ -11,9 +11,9 @@ function pageContent() {
       data.forEach(el => {
         if (el.src) {
           html += `
-            <li class="emoji-item" style="position:relative;">
+            <li class="emoji-item">
               <img src="${el.src}" alt="${el.char}">
-              <span style="position:absolute;top:0;left:0;opacity:0;">${el.char}</span>
+              <span class="emoji-char">${el.char}</span>
             </li>
           `;
         } else {
@@ -53,11 +53,20 @@ function displayMatchesSearch() {
   const matchArray = findMatchesSearch(this.value, emojis);
   const html = matchArray
     .map(emoji => {
-      return `
-      <li class="emoji-item">
-        ${emoji.char}
-      </li>
-    `;
+      if (emoji.src) {
+        return `
+          <li class="emoji-item">
+            <img src="${emoji.src}" alt="${emoji.char}">
+            <span class="emoji-char">${emoji.char}</span>
+          </li>
+        `;
+      } else {
+        return `
+          <li class="emoji-item">
+            ${emoji.char}
+          </li>
+        `;
+      }
     })
     .join('');
 
@@ -127,8 +136,11 @@ function getEmoji(em) {
   //   const emoji = em.target.getAttribute('alt');
   //   return (chooseField.value += emoji.trim());
   // } else {
-  const emoji = em.target.textContent;
-  return (chooseField.value += emoji.trim());
+  if (em.target != result) {
+    const emoji = em.target.textContent;
+    console.log(emoji);
+    return (chooseField.value += emoji.trim());
+  }
   // }
 }
 
