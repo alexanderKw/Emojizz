@@ -1,45 +1,40 @@
 const endpoint = '../data/emojis.json';
 const emojis = [];
 const titleBlock = document.querySelector('.title-block');
+const result = document.querySelector('#result');
 
 /** */
-function pageContent() {
-  fetch(endpoint)
-    .then(res => res.json())
-    .then(data => {
-      let html = '';
-      data.forEach(el => {
-        if (el.src) {
-          html += `
-            <li class="emoji-item">
-              <img src="${el.src}" alt="${el.char}">
-              <span class="emoji-char">${el.char}</span>
-            </li>
-          `;
-        } else {
-          html += `
-            <li class="emoji-item">
-              ${el.char}
-            </li>
-          `;
-        }
-      });
+fetch(endpoint)
+  .then(res => res.json())
+  .then(data => {
+    emojis.push(...data);
 
-      result.innerHTML = html;
-    })
-    .catch(err => console.log(err));
-}
-pageContent();
+    let html = '';
+    data.forEach(emoji => {
+      if (emoji.src) {
+        html += `
+          <li class="emoji-item">
+            <img src="${emoji.src}" alt="${emoji.char}">
+            <span class="emoji-char">${emoji.char}</span>
+          </li>
+        `;
+      } else {
+        html += `
+          <li class="emoji-item">
+            ${emoji.char}
+          </li>
+        `;
+      }
+    });
+
+    result.innerHTML = html;
+  })
+  .catch(err => console.log(err));
 /** */
 
 /**
  * Search Field
  */
-fetch(endpoint)
-  .then(blob => blob.json())
-  .then(data => emojis.push(...data))
-  .catch(err => console.log(err));
-
 function findMatchesSearch(wordToMatch, emojis) {
   return emojis.filter(emoji => {
     const regex = new RegExp(wordToMatch, 'gi');
@@ -75,7 +70,6 @@ function displayMatchesSearch() {
 }
 
 const searchInput = document.querySelector('.search-field');
-const result = document.querySelector('#result');
 searchInput.addEventListener('change', displayMatchesSearch);
 searchInput.addEventListener('keyup', displayMatchesSearch);
 
