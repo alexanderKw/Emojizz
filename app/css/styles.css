@@ -95,16 +95,36 @@ body {
 }
 
 .header-top {
-  margin-bottom: 27px;
+  margin-bottom: 10px;
 
   & .header-block {
     flex-basis: 50%;
   }
 }
 
+.choose-section {
+  width: 90%;
+  position: relative;
+}
+
+.message-info {
+  color: #fff;
+  background-color: #333231;
+  padding: 9px 16px 12px;
+  border-radius: 8px;
+  position: relative;
+  top: 8px;
+  display: inline-block;
+  opacity: 0;
+  transition: all .3s;
+
+  &.active {
+    opacity: 1;
+  }
+}
+
 .choose-block {
   display: block;
-  width: 90%;
   height: 40px;
   border: 1px solid #ccc;
   border-radius: 20px;
@@ -215,6 +235,12 @@ body {
   & .icon-clear_ic {
     right: 6px;
     margin-top: -6.5px;
+    cursor: pointer;
+    opacity: 0;
+
+    &.active {
+      opacity: 1;
+    }
   }
 }
 

@@ -4,32 +4,27 @@ const titleBlock = document.querySelector('.title-block');
 const result = document.querySelector('#result');
 
 /** */
-fetch(endpoint)
-  .then(res => res.json())
-  .then(data => {
-    emojis.push(...data);
+getContent();
+function getContent() {
+  fetch(endpoint)
+    .then(res => res.json())
+    .then(data => {
+      emojis.push(...data);
 
-    let html = '';
-    data.forEach(emoji => {
-      if (emoji.src) {
+      let html = '';
+      data.forEach(emoji => {
         html += `
           <li class="emoji-item">
             <img src="${emoji.src}" alt="${emoji.char}">
             <span class="emoji-char">${emoji.char}</span>
           </li>
         `;
-      } else {
-        html += `
-          <li class="emoji-item">
-            ${emoji.char}
-          </li>
-        `;
-      }
-    });
+      });
 
-    result.innerHTML = html;
-  })
-  .catch(err => console.log(err));
+      result.innerHTML = html;
+    })
+    .catch(err => console.log(err));
+}
 /** */
 
 /**
@@ -45,28 +40,33 @@ function findMatchesSearch(wordToMatch, emojis) {
 }
 
 function displayMatchesSearch() {
+  const clearBtn = document.querySelector('.icon-clear_ic');
+  clearBtn.addEventListener('click', () => {
+    searchInput.value = '';
+    clearBtn.classList.remove('active');
+    getContent();
+  });
+
+  if (!searchInput.value.length) {
+    clearBtn.classList.remove('active');
+  } else {
+    clearBtn.classList.add('active');
+  }
+
   const matchArray = findMatchesSearch(this.value, emojis);
   const html = matchArray
     .map(emoji => {
-      if (emoji.src) {
-        return `
-          <li class="emoji-item">
-            <img src="${emoji.src}" alt="${emoji.char}">
-            <span class="emoji-char">${emoji.char}</span>
-          </li>
-        `;
-      } else {
-        return `
-          <li class="emoji-item">
-            ${emoji.char}
-          </li>
-        `;
-      }
+      return `
+        <li class="emoji-item">
+          <img src="${emoji.src}" alt="${emoji.char}">
+          <span class="emoji-char">${emoji.char}</span>
+        </li>
+      `;
     })
     .join('');
 
   result.innerHTML = html;
-  titleBlock.style.display = 'none';
+  // titleBlock.style.display = 'none';
 }
 
 const searchInput = document.querySelector('.search-field');
@@ -99,7 +99,8 @@ function displayMatchesFilter(e) {
       titleBlock.style.display = 'block';
       return `
         <li class="emoji-item">
-          ${emoji.char}
+          <img src="${emoji.src}" alt="${emoji.char}">
+          <span class="emoji-char">${emoji.char}</span>
         </li>
       `;
     })
@@ -143,11 +144,20 @@ copyBtn.addEventListener('click', () => {
   const chooseField = document.querySelector('.choose-field');
   chooseField.select();
 
-  try {
-    const successful = document.execCommand('copy');
-    const msg = successful ? 'successful' : 'unsuccessful';
-    console.log('Copying text command was ' + msg);
-  } catch (err) {
-    console.log('Oops, unable to copy');
+  const messageCopyField = document.querySelector('.message-info');
+  setTimeout(() => {
+    messageCopyField.classList.remove('active');
+  }, 1500);
+
+  if (chooseField.value.length) {
+    messageCopyField.classList.add('active');
+
+    try {
+      const successful = document.execCommand('copy');
+      const msg = successful ? 'successful' : 'unsuccessful';
+      console.log('Copying text command was ' + msg);
+    } catch (err) {
+      console.log('Oops, unable to copy');
+    }
   }
 });
