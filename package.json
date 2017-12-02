@@ -8,9 +8,7 @@
   },
   "author": ".alx",
   "license": "ISC",
-  "dependencies": {
-    "emoji.json": "^5.0.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "babel-env": "^2.4.1",
     "browser-sync": "^2.18.13",
@@ -21,6 +19,7 @@
     "gulp-concat": "^2.6.1",
     "gulp-htmlmin": "^3.0.0",
     "gulp-imagemin": "^3.4.0",
+    "gulp-jsonmin": "^1.1.0",
     "gulp-notify": "^3.0.0",
     "gulp-plumber": "^1.1.0",
     "gulp-postcss": "^7.0.0",
