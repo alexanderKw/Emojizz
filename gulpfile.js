@@ -11,6 +11,7 @@ const plumber = require('gulp-plumber');
 const notify = require('gulp-notify');
 const spritesmith = require('gulp.spritesmith');
 const buffer = require('vinyl-buffer');
+const jsonmin = require('gulp-jsonmin');
 const imagemin = require('gulp-imagemin');
 const merge = require('merge-stream');
 const bs = require('browser-sync').create();
@@ -113,7 +114,11 @@ gulp.task('move-fonts', () => {
 });
 
 gulp.task('emoji-json', () => {
-  gulp.src('./app/data/emojis.json').pipe(gulp.dest('./dist/data/'));
+  return gulp
+    .src('./app/data/*.json')
+    .pipe(jsonmin())
+    .pipe(rename('emojis.json'))
+    .pipe(gulp.dest('./dist/data/'));
 });
 
 gulp.task('watch', () => {
