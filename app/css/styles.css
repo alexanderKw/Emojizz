@@ -153,6 +153,24 @@ body {
       background-color: var(--color-hover-active);
     }
   }
+
+  & .icon-clear_ic {
+    border: none;
+    background-color: transparent;
+    position: absolute;
+    top: 50%;
+  }
+
+  & .icon-clear_ic {
+    right: 55px;
+    margin-top: -6.5px;
+    cursor: pointer;
+    opacity: 0;
+
+    &.active {
+      opacity: 1;
+    }
+  }
 }
 
 .header-info-links {

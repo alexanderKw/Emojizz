@@ -13,12 +13,14 @@ function getContent() {
 
       let html = '';
       data.forEach(emoji => {
-        html += `
-          <li class="emoji-item">
-            <img src="${emoji.src}" alt="${emoji.char}">
-            <span class="emoji-char">${emoji.char}</span>
-          </li>
-        `;
+        if (emoji.src) {
+          html += `
+            <li class="emoji-item">
+              <img src="${emoji.src}" alt="${emoji.char}">
+              <span class="emoji-char">${emoji.char}</span>
+            </li>
+          `;
+        }
       });
 
       result.innerHTML = html;
@@ -40,7 +42,7 @@ function findMatchesSearch(wordToMatch, emojis) {
 }
 
 function displayMatchesSearch() {
-  const clearBtn = document.querySelector('.icon-clear_ic');
+  const clearBtn = document.querySelector('.clear-search-btn');
   clearBtn.addEventListener('click', () => {
     searchInput.value = '';
     clearBtn.classList.remove('active');
@@ -126,17 +128,19 @@ const chooseField = document.querySelector('.choose-field');
 emojisContent.addEventListener('click', getEmoji);
 
 function getEmoji(em) {
-  // if (em.target.getAttribute('alt')) {
-  //   console.log(em.target.getAttribute('alt'));
-  //   const emoji = em.target.getAttribute('alt');
-  //   return (chooseField.value += emoji.trim());
-  // } else {
+  const clearBtn = document.querySelector('.clear-choose-btn');
+  clearBtn.classList.add('active');
+
+  clearBtn.addEventListener('click', () => {
+    chooseField.value = '';
+    clearBtn.classList.remove('active');
+  });
+
   if (em.target != result) {
     const emoji = em.target.textContent;
     console.log(emoji);
     return (chooseField.value += emoji.trim());
   }
-  // }
 }
 
 const copyBtn = document.querySelector('.wr-btn-copy');
