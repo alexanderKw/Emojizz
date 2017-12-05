@@ -51,6 +51,8 @@ button {
 :root {
   --color-link: #5e5c5b;
   --color-hover-active: #ffc800;
+
+  --bg-color-copy-message: #333231;
 }
 
 [class$="-container"] {
@@ -109,7 +111,7 @@ body {
 
 .message-info {
   color: #fff;
-  background-color: #333231;
+  background-color: var(--bg-color-copy-message);
   padding: 9px 16px 12px;
   border-radius: 8px;
   position: relative;
@@ -134,7 +136,7 @@ body {
   & .choose-field {
     width: calc(100% - 40px);
     height: 100%;
-    padding: 0 10px;
+    padding: 0 38px 0 10px;
     border: none;
   }
 
@@ -162,7 +164,7 @@ body {
   }
 
   & .icon-clear_ic {
-    right: 55px;
+    right: 50px;
     margin-top: -6.5px;
     cursor: pointer;
     opacity: 0;
@@ -309,6 +311,27 @@ body {
   top: 0;
   left: 0;
   opacity: 0;
+}
+
+.emoji-copy-message {
+  color: #fff;
+  font-size: 18px;
+  text-align: center;
+  background-color: var(--bg-color-copy-message);
+  width: 80px;
+  height: 60px;
+  border-radius: 8px;
+  padding: 8px;
+  position: absolute;
+  top: -60px;
+  left: 50%;
+  margin-left: -40px;
+  transition: all .5s;
+
+  & img {
+    width: 20px;
+    height: 20px;
+  }
 }
 
 .title-block {

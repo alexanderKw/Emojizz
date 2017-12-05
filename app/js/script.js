@@ -138,8 +138,27 @@ function getEmoji(em) {
 
   if (em.target != result) {
     const emoji = em.target.textContent;
-    console.log(emoji);
-    return (chooseField.value += emoji.trim());
+    const emojiContainer = em.target.parentNode;
+    const emojiCopyMessage = `
+      <div class="emoji-copy-message">
+        <img src="${em.target.parentElement.firstElementChild.getAttribute(
+          'src'
+        )}">
+        <span>Copied!</span>
+      </div>
+    `;
+
+    emojiContainer.insertAdjacentHTML('beforeend', emojiCopyMessage);
+
+    setTimeout(() => {
+      emojiContainer.removeChild(
+        em.target.parentElement.querySelector('.emoji-copy-message')
+      );
+    }, 800);
+
+    if (emoji != 'Copied!') {
+      return (chooseField.value += emoji.trim());
+    }
   }
 }
 
