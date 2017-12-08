@@ -148,6 +148,20 @@ function getEmoji(em) {
       </div>
     `;
 
+    let textarea = document.createElement('textarea');
+    textarea.textContent = emoji;
+    textarea.style.position = 'fixed';
+    document.body.appendChild(textarea);
+    textarea.select();
+    try {
+      document.execCommand('copy');
+    } catch (ex) {
+      console.warn('Copy to clipboard failed.', ex);
+      return false;
+    } finally {
+      document.body.removeChild(textarea);
+    }
+
     emojiContainer.insertAdjacentHTML('beforeend', emojiCopyMessage);
 
     setTimeout(() => {
@@ -157,7 +171,7 @@ function getEmoji(em) {
     }, 800);
 
     if (emoji != 'Copied!') {
-      return (chooseField.value += emoji.trim());
+      chooseField.value += emoji.trim();
     }
   }
 }
