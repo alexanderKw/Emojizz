@@ -50,7 +50,8 @@ button {
 
 :root {
   --color-link: #5e5c5b;
-  --color-hover-active: #ffc800;
+  --color-hover: #f0efee;
+  --color-active: #ffc800;
 
   --bg-color-copy-message: #333231;
 }
@@ -152,25 +153,49 @@ body {
     cursor: pointer;
 
     &:hover {
-      background-color: var(--color-hover-active);
+      background-color: var(--color-hover);
     }
+
+    &:active {
+      background-color: var(--color-active);
+    }
+  }
+
+  & .wr-clear-choose-btn,
+  & .icon-clear_ic {
+    position: absolute;
+    top: 50%;
+    cursor: pointer;
+    background-color: transparent;
   }
 
   & .icon-clear_ic {
     border: none;
-    background-color: transparent;
-    position: absolute;
-    top: 50%;
+    left: 50%;
+    margin-top: -6.5px;
+    margin-left: -6.5px;
   }
 
-  & .icon-clear_ic {
+  & .wr-clear-choose-btn {
+    width: 23px;
+    height: 23px;
+    border-radius: 50%;
     right: 50px;
-    margin-top: -6.5px;
-    cursor: pointer;
+    margin-top: -11.5px;
     opacity: 0;
+    z-index: -1;
+
+    &:hover {
+      background-color: var(--color-hover);
+    }
+
+    &:active {
+      background-color: var(--color-active);
+    }
 
     &.active {
       opacity: 1;
+      z-index: inherit;
     }
   }
 }
@@ -191,7 +216,11 @@ body {
     border-radius: 20px;
 
     &:hover {
-      background-color: var(--color-hover-active);
+      background-color: var(--color-hover);
+    }
+
+    &:active {
+      background-color: var(--color-active);
     }
   }
 
@@ -235,12 +264,13 @@ body {
     transition: all .3s;
 
     &:focus {
-      box-shadow: 0 1px 0 0 var(--color-hover-active), inset 0 -2px 0 0 var(--color-hover-active);
+      box-shadow: 0 1px 0 0 var(--color-active), inset 0 -2px 0 0 var(--color-active);
     }
   }
 
   & .icon-search_ic,
-  & .icon-clear_ic {
+  & .icon-clear_ic,
+  & .wr-clear-search-btn {
     border: none;
     background-color: transparent;
     position: absolute;
@@ -252,15 +282,35 @@ body {
     margin-top: -9.5px;
   }
 
-  & .icon-clear_ic {
+  & .wr-clear-search-btn {
+    width: 23px;
+    height: 23px;
+    border-radius: 50%;
     right: 6px;
-    margin-top: -6.5px;
+    margin-top: -11.5px;
     cursor: pointer;
     opacity: 0;
+    z-index: -1;
+
+    &:hover {
+      background-color: var(--color-hover);
+    }
+
+    &:active {
+      background-color: var(--color-active);
+    }
 
     &.active {
       opacity: 1;
+      z-index: inherit;
     }
+  }
+
+  & .icon-clear_ic {
+    left: 50%;
+    margin-left: -6.5px;
+    margin-top: -6.5px;
+    cursor: pointer;
   }
 }
 
@@ -339,5 +389,5 @@ body {
 }
 
 .choose-field::selection {
-  background-color: color(var(--color-hover-active) alpha(-60%));
+  background-color: color(var(--color-active) alpha(-60%));
 }
