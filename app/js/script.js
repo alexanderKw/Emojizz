@@ -42,7 +42,7 @@ function findMatchesSearch(wordToMatch, emojis) {
 }
 
 function displayMatchesSearch() {
-  const clearBtn = document.querySelector('.clear-search-btn');
+  const clearBtn = document.querySelector('.wr-clear-search-btn');
   clearBtn.addEventListener('click', () => {
     searchInput.value = '';
     clearBtn.classList.remove('active');
@@ -72,7 +72,7 @@ function displayMatchesSearch() {
 }
 
 const searchInput = document.querySelector('.search-field');
-searchInput.addEventListener('change', displayMatchesSearch);
+// searchInput.addEventListener('change', displayMatchesSearch);
 searchInput.addEventListener('keyup', displayMatchesSearch);
 
 /**
@@ -128,7 +128,7 @@ const chooseField = document.querySelector('.choose-field');
 emojisContent.addEventListener('click', getEmoji);
 
 function getEmoji(em) {
-  const clearBtn = document.querySelector('.clear-choose-btn');
+  const clearBtn = document.querySelector('.wr-clear-choose-btn');
   clearBtn.classList.add('active');
 
   clearBtn.addEventListener('click', () => {
