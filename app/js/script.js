@@ -78,7 +78,7 @@ searchInput.addEventListener('keyup', displayMatchesSearch);
 /**
  * Tabs Filter
  */
-const searchFilter = document.querySelectorAll('.search-filter a');
+const categoryItems = document.querySelectorAll('.search-filter a');
 
 function findMatchesFilter(filterMatch, emojis) {
   return emojis.filter(emoji => {
@@ -116,8 +116,8 @@ function displayMatchesFilter(e) {
   }
 }
 
-// searchFilter.addEventListener('click', findMatchesFilter);
-searchFilter.forEach(el => el.addEventListener('click', displayMatchesFilter));
+// categoryItems.addEventListener('click', findMatchesFilter);
+categoryItems.forEach(el => el.addEventListener('click', displayMatchesFilter));
 
 /**
  * Copy emoji
@@ -155,8 +155,8 @@ function getEmoji(em) {
     textarea.select();
     try {
       document.execCommand('copy');
-    } catch (ex) {
-      console.warn('Copy to clipboard failed.', ex);
+    } catch (err) {
+      console.warn('Copy to clipboard failed.', err);
       return false;
     } finally {
       document.body.removeChild(textarea);
@@ -194,7 +194,42 @@ copyBtn.addEventListener('click', () => {
       const msg = successful ? 'successful' : 'unsuccessful';
       console.log('Copying text command was ' + msg);
     } catch (err) {
-      console.log('Oops, unable to copy');
+      console.log('Oops, unable to copy', err);
     }
   }
 });
+
+/**
+ * Search categories
+ */
+const categories = document.querySelectorAll('.search-filter li');
+categories.forEach(category => {
+  category.addEventListener('click', function() {
+    if (this.classList != 'active') {
+      for (let cat of categories) {
+        cat.classList.remove('active');
+      }
+    }
+    this.classList.add('active');
+  });
+});
+
+/**
+ * Drag categories panel
+ */
+const bodyCatPanel = document.querySelector('.block-search-filter');
+const catPanel = document.querySelector('.search-filter');
+catPanel.addEventListener('mousedown', e => {
+  let panelCoords = getCoords(catPanel);
+  let shiftX = e.pageX - panelCoords.left;
+});
+
+function getCoords(elem) {
+  let box = elem.getBoundingClientRect();
+
+  return {
+    top: box.top + pageYOffset,
+    left: box.left + pageXOffset,
+    right: box.right + pageXOffset
+  };
+}
