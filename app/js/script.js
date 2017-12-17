@@ -217,19 +217,41 @@ categories.forEach(category => {
 /**
  * Drag categories panel
  */
-const bodyCatPanel = document.querySelector('.block-search-filter');
-const catPanel = document.querySelector('.search-filter');
-catPanel.addEventListener('mousedown', e => {
-  let panelCoords = getCoords(catPanel);
-  let shiftX = e.pageX - panelCoords.left;
-});
+window.addEventListener(
+  'load',
+  function() {
+    const bodyCatPanel = document.querySelector('.block-search-filter');
+    const catPanel = document.querySelector('.search-filter');
+    let boxleft;
+    let startx;
+    let dist = 0;
+    let touchobj = null;
 
-function getCoords(elem) {
-  let box = elem.getBoundingClientRect();
+    catPanel.style.cssText = 'left: 0; top: 0;';
 
-  return {
-    top: box.top + pageYOffset,
-    left: box.left + pageXOffset,
-    right: box.right + pageXOffset
-  };
-}
+    catPanel.addEventListener(
+      'touchstart',
+      function(e) {
+        touchobj = e.changedTouches[0];
+        boxleft = parseInt(catPanel.style.left);
+        startx = parseInt(touchobj.clientX);
+      },
+      false
+    );
+
+    catPanel.addEventListener(
+      'touchmove',
+      function(e) {
+        touchobj = e.changedTouches[0];
+        let dist = parseInt(touchobj.clientX) - startx;
+        catPanel.style.left =
+          (boxleft + dist > 120
+            ? 120
+            : boxleft + dist < 0 ? 0 : boxleft + dist) + 'px';
+        e.preventDefault();
+      },
+      false
+    );
+  },
+  false
+);

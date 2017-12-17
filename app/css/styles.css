@@ -64,6 +64,7 @@ button {
 body {
   font: 16px/1.2 "robotoregular";
   background-color: #fff;
+  min-width: 320px;
 }
 
 /* Header */
@@ -351,7 +352,7 @@ body {
   display: flex;
   flex-basis: 64px;
   height: 64px;
-  font-size: 40px;
+  font-size: 30px;
   position: relative;
 
   & img {
@@ -401,4 +402,16 @@ body {
 
 .choose-field::selection {
   background-color: color(var(--color-active) alpha(-60%));
+}
+
+/* Touch(drag) category panel */
+.block-search-filter {
+  width: 430px;
+  overflow: hidden;
+}
+
+.search-filter {
+  width: 430px;
+  position: relative;
+  transition: all .3s;
 }
