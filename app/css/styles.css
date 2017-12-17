@@ -119,6 +119,7 @@ body {
   top: 8px;
   display: inline-block;
   opacity: 0;
+  cursor: default;
   transition: all .3s;
 
   &.active {
@@ -316,11 +317,16 @@ body {
 
 .search-filter {
   display: flex;
+  height: 58px;
 
   & li {
     width: 39px;
-    height: 39px;
+    min-width: 39px;
     text-indent: -9999px;
+
+    &.active {
+      box-shadow: 0 1px 0 0 var(--color-active), inset 0 -2px 0 0 var(--color-active);
+    }
   }
 
   & a {
@@ -342,15 +348,20 @@ body {
 }
 
 .emoji-item {
-  flex-basis: 30px;
-  height: 30px;
-  font-size: 30px;
-  margin: 5px;
+  display: flex;
+  flex-basis: 64px;
+  height: 64px;
+  font-size: 40px;
   position: relative;
 
   & img {
-    width: 100%;
+    width: 40px;
     height: auto;
+    margin: auto;
+  }
+
+  &:hover {
+    background-color: color(var(--color-active) alpha(-50%));
   }
 }
 
