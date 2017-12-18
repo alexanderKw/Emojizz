@@ -321,8 +321,6 @@ body {
   height: 58px;
 
   & li {
-    width: 39px;
-    min-width: 39px;
     text-indent: -9999px;
 
     &.active {
@@ -332,6 +330,7 @@ body {
 
   & a {
     display: flex;
+    padding: 0 13px;
     width: 100%;
     height: 100%;
   }
@@ -406,12 +405,12 @@ body {
 
 /* Touch(drag) category panel */
 .block-search-filter {
-  width: 430px;
+  width: 500px;
   overflow: hidden;
 }
 
 .search-filter {
-  width: 430px;
+  width: 500px;
   position: relative;
   transition: all .3s;
 }

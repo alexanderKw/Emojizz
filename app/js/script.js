@@ -219,7 +219,7 @@ categories.forEach(category => {
  */
 window.addEventListener(
   'load',
-  function() {
+  () => {
     const bodyCatPanel = document.querySelector('.block-search-filter');
     const catPanel = document.querySelector('.search-filter');
     let boxleft;
@@ -231,7 +231,7 @@ window.addEventListener(
 
     catPanel.addEventListener(
       'touchstart',
-      function(e) {
+      e => {
         touchobj = e.changedTouches[0];
         boxleft = parseInt(catPanel.style.left);
         startx = parseInt(touchobj.clientX);
@@ -241,12 +241,12 @@ window.addEventListener(
 
     catPanel.addEventListener(
       'touchmove',
-      function(e) {
+      e => {
         touchobj = e.changedTouches[0];
         let dist = parseInt(touchobj.clientX) - startx;
         catPanel.style.left =
-          (boxleft + dist > 120
-            ? 120
+          (boxleft + dist > 185
+            ? 185
             : boxleft + dist < 0 ? 0 : boxleft + dist) + 'px';
         e.preventDefault();
       },
